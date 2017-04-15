@@ -8,24 +8,29 @@
 #ifndef DECISIONNODE_H_
 #define DECISIONNODE_H_
 #include <list>
+#include <utility>
+#include <iostream>
+
 using namespace std;
 
-list<list <bool> >::iterator popit;
-list<bool>::iterator indit;
+
 
 class decisionNode {
-//	list<list <bool> >::iterator popit;
-//	list<bool>::iterator indit;
+	list<list<pair<int, bool> > >::iterator Lit;
+	list<pair<int, bool> >::iterator lit;
 	bool decision, leafNode;
 	int feature;
-	//decisionNode *nodePtrF, *nodePtrT;
+	decisionNode *nodePtrF, *nodePtrT;
+
+	double IGOnSplit(list<list <pair<int, bool> > > population,
+			int feature);
 
 public:
-	decisionNode(list<list <bool> >);
+	decisionNode(list<list <pair<int, bool> > >);
 //	virtual ~decisionNode();
 
-	bool isHomogenous(list<list <bool> >);
-	int findFeature(list<list <bool> >);
+	bool isHomogenous(list<list <pair<int, bool> > >);
+	int findFeature(list<list <pair<int, bool> > >);
 
 };
 

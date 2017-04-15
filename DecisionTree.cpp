@@ -8,35 +8,36 @@
 
 #include <iostream>
 #include <list>
-//#include "decisionNode.h"
+#include <utility>
+#include "decisionNode.h"
 
 using namespace std;
 
 
 int main() {
-	list<bool>* individual;
-	list<list <bool> > population;
+	pair<int, bool>* data;
+	list<pair<int, bool> >* individual;
+	list<list<pair<int, bool> > > population;
+	decisionNode* tree;
 
-	list<list <bool> >::iterator popit;
-	list<bool>::iterator indit;
+	list<list<pair<int, bool> > >::iterator popit;
+	list<pair<int, bool> >::iterator indit;
 
-	bool instance[4][3] = 	{{false, true, true},
+	bool instance[4][3] = 	{{false, true, false},
 							{true, false, true},
 							{false, false, false},
 							{true, true, true}};
 
-	/*individual = new list<bool>;
-	population.push_back(*individual);
-	popit = population.begin();*/
+	popit = population.begin();
 
 	for (int i =0; i < 4; i++){
-		individual = new list<bool>;
-		population.push_front(*individual);
-		popit = population.begin();
+		individual = new list<pair<int, bool> >;
+
 		for (int k = 0; k < 3; k++){
-			popit->push_back(instance[i][k]);
+			data = new pair<int, bool>(k, instance[i][k]);
+			individual->push_back(*data);
 		}
-		popit++;
+		population.push_back(*individual);
 	}
 
 	popit = population.begin();
@@ -44,14 +45,20 @@ int main() {
 	for (int i =0; i < 4; i++){
 		indit = popit->begin();
 		for (int k = 0; k < 3; k++){
-			cout << *indit;
+			cout << get<1>(*indit);
 			indit++;
 		}
 		cout << endl;
 		popit++;
 	}
 
-	cout << endl;
+	tree = new decisionNode(population);
+
+	delete tree;
+	population.clear();
+
+
+/*	cout << endl;
 	popit = population.end();
 	popit--;
 
@@ -64,6 +71,6 @@ int main() {
 
 
 
-
+*/
 
 }
