@@ -1,0 +1,15 @@
+To compile the project type make
+
+To remove .o's and the executable type make clean
+
+To run this project type ./DecisionTree
+
+First enter a file that you would like to read the sample from.
+It must be formatted correctly. An example is a.in
+
+Enter novel examples to check classification.
+
+This project should run clean with appropriate input without
+any memory leaks.
+
+Greg
