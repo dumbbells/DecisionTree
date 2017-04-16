@@ -28,17 +28,15 @@ int main() {
 	string fileName = "a.in";
 	ifstream in;
 	int popSize, complexity;
+	int dummy;
 
 	cout << "Enter the file you would like to read from: ";
-	cin >> fileName;
+	//cin >> fileName;
 	in.open(fileName);
 	in >> complexity;
-	cout << "complexity is: " << complexity << endl;
 	in >> popSize;
-	cout << "pop size is: " << popSize << endl;
 
 	popit = population.begin();
-	bool dummy;
 	for (int i = 0; i < popSize; i++){
 		individual = new list<pair<int, bool> >;
 		for (int ii = 0; ii <= complexity; ii++){
@@ -50,7 +48,22 @@ int main() {
 	}
 
 	tree = new decisionNode(population);
+	cout << "tree is completed\n";
 
+	while (1){
+		individual->clear();
+		cout << "enter a novel example of " << complexity
+				<< ", or enter '2' to end:\n";
+		for (int i = 0; i < complexity; i ++){
+			cin >> dummy;
+			if (dummy == 2) goto end;
+			data = new pair<int, bool>(i, dummy);
+			individual->push_back(*data);
+		}
+		cout << "class is: " << tree->classify(*individual) << endl;
+	}
+	end:
+	cout << "goodbye!\n";
 	delete tree;
 	population.clear();
 

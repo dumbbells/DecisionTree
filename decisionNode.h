@@ -25,16 +25,17 @@ class decisionNode {
 
 	void print(list<list <pair<int, bool> > >);
 	void prepList(list<list<pair<int, bool> > >);
+	bool findMode(list<list<pair<int, bool> > >);
+	bool isHomogenous(list<list <pair<int, bool> > >);
+	int findFeature(list<list <pair<int, bool> > >);
 	double getEntropy(list<pair<bool, bool> >, int);
 	double IGOnSplit(list<list <pair<int, bool> > > population,
 			int feature);
 
 public:
+	bool classify(list<pair<int, bool> >);
 	decisionNode(list<list <pair<int, bool> > >);
 	~decisionNode();
-
-	bool isHomogenous(list<list <pair<int, bool> > >);
-	int findFeature(list<list <pair<int, bool> > >);
 
 };
 
